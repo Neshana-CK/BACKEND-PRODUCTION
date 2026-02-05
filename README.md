@@ -47,15 +47,6 @@ backend-production/
 ├── package.json
 └── package-lock.json
 
-
----
-
-## 🖼 Screenshot
-
-![Server Running](./screenshots/server-running.png)
-
----
-
 ## ⚙️ Environment Variables
 
 Create a `.env` file in the root directory:
