@@ -129,6 +129,7 @@ Errors thrown using next(new AppError())
 Error middleware placed last
 
 🧪 Day-2 Test Scenarios
+
 1️⃣ Register with Existing Email
 {
   "status": "fail",
@@ -149,10 +150,12 @@ Error middleware placed last
 
 🖼 Day-2 Screenshots
 Existing Email Error
-<img width="1920" height="1080" alt="Screenshot 2026-02-08 174920" src="https://github.com/user-attachments/assets/b574b07c-e1f1-40ae-94e5-844f3bec12ea" />
+
+<img width="1660" height="655" alt="Screenshot 2026-02-08 174920" src="https://github.com/user-attachments/assets/cc44cfd7-c29e-410d-8e11-43eb5ecd7861" />
 
 Invalid Password Error
-<img width="1920" height="1080" alt="Screenshot 2026-02-08 175748" src="https://github.com/user-attachments/assets/fbd9ec0c-a2f7-4c47-8361-72d722350a5d" />
+
+<img width="1644" height="666" alt="Screenshot 2026-02-08 175748" src="https://github.com/user-attachments/assets/71e04988-eb66-440a-a17f-7eb446d7b905" />
 
 Invalid Route Error
-<img width="1920" height="1080" alt="Screenshot 2026-02-08 180237" src="https://github.com/user-attachments/assets/89178dc6-5e1b-4730-b5ae-995c1f4d7442" />
+<img width="1658" height="657" alt="Screenshot 2026-02-08 180237" src="https://github.com/user-attachments/assets/7af8aac5-f1ca-4021-9a48-f79807aa217a" />
