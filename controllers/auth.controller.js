@@ -1,43 +1,45 @@
 const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
+const AppError = require("../utils/appError");
 
-// register
-exports.register = async(req, res) =>{
-    const {name,email,password} = req.body;
+exports.register = async (req, res, next) => {
+    const { name, email, password } = req.body;
 
-    const userExists = await User.findOne({email});
-    if(userExists){
-        return res.status(400).json({message:"User already exists"});
-
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+        return next(new AppError("User already exists", 400));
     }
-    const user = await User.create({name,email,password});
+
+    await User.create({ name, email, password });
 
     res.status(201).json({
-        message:"User registered successfully"
+        status: "success",
+        message: "User registered successfully"
     });
 };
-// login
-exports.login = async (req,res) => {
-    const {email,password}=req.body;
 
-    const user = await User.findOne({email});
-    if(!user){
-        return res.status(401).json({message:"Invalid credentials"});
+exports.login = async (req, res, next) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return next(new AppError("Invalid email or password", 401));
     }
 
     const isMatch = await user.comparePassword(password);
-    if(!isMatch){
-        return res.status(401).json({message:"Invalid credentials"});
+    if (!isMatch) {
+        return next(new AppError("Invalid email or password", 401));
     }
 
     const token = jwt.sign(
-        { userId:user._id },
+        { userId: user._id },
         process.env.JWT_SECRET,
-        {expiresIn:"1d"}
+        { expiresIn: "1d" }
     );
 
     res.json({
-        message:"Login successfully",
+        status: "success",
+        message: "Login successful",
         token
     });
 };
