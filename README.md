@@ -58,6 +58,7 @@ Server runs at:
 http://localhost:5000
 
 📅 Day 1 – Authentication APIs
+
 🔐 Features Implemented
 
 User Registration
@@ -105,6 +106,7 @@ POST /api/auth/login
 }
 
 🖼 Day-1 Screenshots
+
 Register – Success
 <img width="1638" height="569" alt="Screenshot 2026-02-05 102730" src="https://github.com/user-attachments/assets/9989462a-62a7-4252-a755-7effaba2dab5" />
 
@@ -112,6 +114,7 @@ Login – Success
 <img width="1650" height="562" alt="Screenshot 2026-02-05 103609" src="https://github.com/user-attachments/assets/772544c6-bc27-4fdb-a553-7a0ab0936e01" />
 
 📅 Day 2 – Centralized Error Handling
+
 🎯 Objective
 
 Remove try–catch blocks from controllers and handle all errors centrally using a custom error class and global error middleware.
@@ -149,6 +152,7 @@ Error middleware placed last
 }
 
 🖼 Day-2 Screenshots
+
 Existing Email Error
 
 <img width="1660" height="655" alt="Screenshot 2026-02-08 174920" src="https://github.com/user-attachments/assets/cc44cfd7-c29e-410d-8e11-43eb5ecd7861" />
