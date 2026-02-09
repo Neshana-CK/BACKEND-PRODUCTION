@@ -139,15 +139,15 @@ GET /api/tasks?search=login
 
 **Pagination (page & limit)**
 
-<img width="1920" height="1080" alt="Screenshot 2026-02-09 193338" src="https://github.com/user-attachments/assets/555a21bd-d87f-4668-9fe0-939b0d20f42b" />
+<img width="1666" height="671" alt="Screenshot 2026-02-09 193338" src="https://github.com/user-attachments/assets/65eac115-977f-4d5e-9cd2-984a362153ec" />
 
 **Filter by Status**
 
-<img width="1920" height="1080" alt="Screenshot 2026-02-09 193437" src="https://github.com/user-attachments/assets/e5cd9c8b-8ac6-400d-b0b9-fba7865e9ec7" />
+<img width="1658" height="666" alt="Screenshot 2026-02-09 193437" src="https://github.com/user-attachments/assets/1250f6d1-6b6b-45bc-a99e-4e9f4891ff95" />
 
 **Search Tasks**
 
-<img width="1920" height="1080" alt="Screenshot 2026-02-09 193514" src="https://github.com/user-attachments/assets/2f2066a2-a1c2-41ab-896e-dcfe0b32ba46" />
+<img width="1638" height="663" alt="Screenshot 2026-02-09 193514" src="https://github.com/user-attachments/assets/36e19198-e55a-4023-8eed-e76459749ff7" />
 
 Create Task 
 
