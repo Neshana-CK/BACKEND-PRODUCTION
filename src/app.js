@@ -6,16 +6,19 @@ const errorMiddleware = require("../middleware/error.middleware");
 
 const app = express();
 
+// Body parser
 app.use(express.json());
 
+// Routes
 app.use("/api/auth", require("../routes/auth.routes"));
+app.use("/api", require("../routes/task"));
 
-// catch all invalid routes
+// Catch all invalid routes
 app.use((req, res, next) => {
     next(new AppError(`Route ${req.originalUrl} not found`, 404));
 });
 
-// global error handler (MUST be last)
+// Global error handler (MUST be last)
 app.use(errorMiddleware);
 
 module.exports = app;
