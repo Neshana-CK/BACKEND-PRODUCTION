@@ -1,6 +1,6 @@
-🚀 Taskflow Backend (Day 1 & Day 2)
+🚀 Taskflow Backend (Day 1, Day 2 & Day 3)
 
-A Node.js + Express + MongoDB backend implementing JWT authentication with centralized error handling using industry best practices.
+A Node.js + Express + MongoDB backend implementing JWT authentication, centralized error handling, and request validation middleware using industry best practices.
 
 🛠 Tech Stack
 
@@ -18,6 +18,8 @@ bcryptjs
 
 dotenv
 
+Thunder Client (API Testing)
+
 📁 Project Structure
 backend-production/
 ├── config/
@@ -26,6 +28,7 @@ backend-production/
 │   └── auth.controller.js
 ├── middleware/
 │   ├── auth.middleware.js
+│   ├── validation.middleware.js
 │   └── error.middleware.js
 ├── models/
 │   └── user.model.js
@@ -57,8 +60,7 @@ Server runs at:
 
 http://localhost:5000
 
-📅 Day 1 – Authentication APIs
-
+📅 DAY 1 – Authentication APIs
 🔐 Features Implemented
 
 User Registration
@@ -71,7 +73,12 @@ JWT token generation
 
 🧪 Register User
 
+Endpoint
+
 POST /api/auth/register
+
+
+Request Body
 
 {
   "name": "Nishana",
@@ -89,7 +96,12 @@ POST /api/auth/register
 
 🧪 Login User
 
+Endpoint
+
 POST /api/auth/login
+
+
+Request Body
 
 {
   "email": "nishana@gmail.com",
@@ -105,16 +117,16 @@ POST /api/auth/login
   "token": "JWT_TOKEN"
 }
 
-🖼 Day-1 Screenshots
+🖼 Day 1 Screenshots
 
 Register – Success
-<img width="1638" height="569" alt="Screenshot 2026-02-05 102730" src="https://github.com/user-attachments/assets/9989462a-62a7-4252-a755-7effaba2dab5" />
 
+<img width="1638" height="569" alt="Screenshot 2026-02-05 102730" src="https://github.com/user-attachments/assets/9989462a-62a7-4252-a755-7effaba2dab5" />
 Login – Success
+
 <img width="1650" height="562" alt="Screenshot 2026-02-05 103609" src="https://github.com/user-attachments/assets/772544c6-bc27-4fdb-a553-7a0ab0936e01" />
 
-📅 Day 2 – Centralized Error Handling
-
+📅 DAY 2 – Centralized Error Handling
 🎯 Objective
 
 Remove try–catch blocks from controllers and handle all errors centrally using a custom error class and global error middleware.
@@ -123,16 +135,15 @@ Remove try–catch blocks from controllers and handle all errors centrally using
 
 Custom AppError class
 
-Global error middleware
+Global error-handling middleware
 
-Controllers stay clean
+Controllers remain clean
 
-Errors thrown using next(new AppError())
+Errors passed using next(new AppError())
 
-Error middleware placed last
+Error middleware registered last
 
-🧪 Day-2 Test Scenarios
-
+🧪 Day 2 Test Scenarios
 1️⃣ Register with Existing Email
 {
   "status": "fail",
@@ -151,15 +162,125 @@ Error middleware placed last
   "message": "Route /api/xyz not found"
 }
 
-🖼 Day-2 Screenshots
+🖼 Day 2 Screenshots
 
-Existing Email Error
+Existing Email Error 
 
 <img width="1660" height="655" alt="Screenshot 2026-02-08 174920" src="https://github.com/user-attachments/assets/cc44cfd7-c29e-410d-8e11-43eb5ecd7861" />
 
-Invalid Password Error
+Invalid Password Error 
 
 <img width="1644" height="666" alt="Screenshot 2026-02-08 175748" src="https://github.com/user-attachments/assets/71e04988-eb66-440a-a17f-7eb446d7b905" />
 
 Invalid Route Error
+
 <img width="1658" height="657" alt="Screenshot 2026-02-08 180237" src="https://github.com/user-attachments/assets/7af8aac5-f1ca-4021-9a48-f79807aa217a" />
+
+📅 DAY 3 – Validation (Data Protection)
+🎯 Objective
+
+Protect the database from bad or malicious input using validation middleware.
+
+✅ Validation Rules
+Register Validation
+
+All fields required
+
+Valid email format
+
+Password minimum 6 characters
+
+Login Validation
+
+Email required
+
+Password required
+
+Valid email format
+
+🛡 Validation Middleware
+
+Runs before controller
+
+Stops request if invalid
+
+Prevents bad data from reaching database
+
+🧪 Day 3 Test Cases (Thunder Client)
+❌ Missing Fields
+{
+  "email": "nishana@gmail.com"
+}
+
+
+Response
+
+{
+  "status": "fail",
+  "message": "All fields are required"
+}
+
+❌ Invalid Email Format
+{
+  "name": "nishana",
+  "email": "nishanagmail.com",
+  "password": "123456"
+}
+
+
+Response
+
+{
+  "status": "fail",
+  "message": "Invalid email format"
+}
+
+❌ Short Password
+{
+  "name": "nishana",
+  "email": "nishana@gmail.com",
+  "password": "123"
+}
+
+
+Response
+
+{
+  "status": "fail",
+  "message": "Password must be at least 6 characters"
+}
+
+❌ Login Missing Password
+{
+  "email": "nishana@gmail.com"
+}
+
+
+Response
+
+{
+  "status": "fail",
+  "message": "Email and password are required"
+}
+
+🖼 Day 3 Screenshots
+
+Missing Fields Validation
+
+<img width="1641" height="646" alt="Screenshot 2026-02-08 201933" src="https://github.com/user-attachments/assets/aba5c51e-6cc0-4dfd-93a4-515a841aa0f8" />
+
+Invalid Email Validation
+
+<img width="1641" height="652" alt="Screenshot 2026-02-08 202130" src="https://github.com/user-attachments/assets/af418ada-4f41-43ee-8f2d-39905c3eb0e9" />
+
+Short Password Validation
+
+<img width="1647" height="660" alt="Screenshot 2026-02-08 202204" src="https://github.com/user-attachments/assets/6f7f3a8c-cf8a-4dda-a493-fccb923b7962" />
+
+Login Validation Error
+
+<img width="1641" height="663" alt="Screenshot 2026-02-08 202304" src="https://github.com/user-attachments/assets/4301b2b7-ca56-4c3f-95ee-f416b39b9e8c" />
+
+
+
+
