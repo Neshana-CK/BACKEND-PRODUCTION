@@ -1,12 +1,23 @@
 // src/app.js
 const express = require("express");
+const helmet = require("helmet");
 const morgan = require("morgan");
-const logger = require("../utils/logger"); // Winston logger
+const logger = require("../utils/logger");
+
+const authRoutes = require("../routes/auth.routes");
+const taskRoutes = require("../routes/task");
+
+// ✅ Swagger
+const { swaggerUi, specs } = require("../config/swagger");
+
 const app = express();
+
+// 🔐 Security Headers
+app.use(helmet());
 
 app.use(express.json());
 
-// Morgan logs requests using Winston
+// 📜 Morgan logs requests using Winston
 app.use(
   morgan("combined", {
     stream: {
@@ -15,37 +26,30 @@ app.use(
   })
 );
 
-// GET /api/hello
+// ---------------- ROUTES ----------------
+
+// Test route
 app.get("/api/hello", (req, res) => {
   res.json({ message: "Hello World!" });
 });
 
-// POST /api/users
-app.post("/api/users", (req, res) => {
-  const { name, email } = req.body;
+// ✅ Swagger Route
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
-  if (!name || !email) {
-    return res.status(400).json({ error: "Name and email are required" });
-  }
+// ✅ Mount auth routes
+app.use("/api/auth", authRoutes);
 
-  // For demo: just return the user data
-  res.status(201).json({
-    message: "User created successfully",
-    user: { name, email },
-  });
-});
+// ✅ Mount task routes
+app.use("/api", taskRoutes);
 
-// GET /api/error to trigger error logs
-app.get("/api/error", (req, res, next) => {
-  const err = new Error("Test error triggered");
-  err.status = 500;
-  next(err);
-});
+// ---------------- ERROR MIDDLEWARE ----------------
 
-// Error middleware
 app.use((err, req, res, next) => {
   logger.error(`${err.message} - ${req.method} ${req.originalUrl}`);
-  res.status(err.status || 500).json({ error: err.message });
+  res.status(err.status || 500).json({
+    success: false,
+    error: err.message,
+  });
 });
 
 module.exports = app;
