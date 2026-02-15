@@ -203,7 +203,8 @@ POST /api/users
 
 GET /api/error
 
-<img width="1647" height="657" alt="Screenshot 2026-02-09 222156" src="https://github.com/user-attachments/assets/47e8ad2b-a293-48be-8c30-b478b84acd5c" />
+<img width="1644" height="666" alt="Screenshot 2026-02-09 222048" src="https://github.com/user-attachments/assets/128ba827-104e-4cc6-95e2-600ad2611ac9" />
+
 
 
 
