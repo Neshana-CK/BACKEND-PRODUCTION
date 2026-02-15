@@ -2,6 +2,13 @@ const User = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const AppError = require("../utils/appError");
 
+exports.getTasks = async (req, res, next) => {
+    try {
+        throw new AppError("Test error logging!", 400); // This will go to error.log
+    } catch (err) {
+        next(err);
+    }
+};
 exports.register = async (req, res, next) => {
     const { name, email, password } = req.body;
 

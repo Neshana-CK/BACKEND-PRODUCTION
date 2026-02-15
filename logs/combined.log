@@ -1,0 +1,3 @@
+2026-02-09T16:31:14.522Z [[32minfo[39m]: ::ffff:127.0.0.1 - - [09/Feb/2026:16:31:14 +0000] "GET /api/hello HTTP/1.1" 404 148 "-" "Thunder Client (https://www.thunderclient.com)"
+2026-02-09T16:31:32.988Z [[32minfo[39m]: ::ffff:127.0.0.1 - - [09/Feb/2026:16:31:32 +0000] "GET /api/hello HTTP/1.1" 404 148 "-" "Thunder Client (https://www.thunderclient.com)"
+2026-02-09T16:31:46.787Z [[32minfo[39m]: ::ffff:127.0.0.1 - - [09/Feb/2026:16:31:46 +0000] "GET /api/hello HTTP/1.1" 404 148 "-" "Thunder Client (https://www.thunderclient.com)"
