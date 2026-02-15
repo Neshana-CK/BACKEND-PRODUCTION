@@ -1,4 +1,4 @@
-🚀 Taskflow Backend (Day 1 – Day 5)
+🚀 Taskflow Backend (Day 1 – Day 6)
 
 Node.js + Express + MongoDB backend with JWT authentication, centralized error handling, validation, task APIs with pagination, filtering, search, and production logging.
 
@@ -205,7 +205,106 @@ GET /api/error
 
 <img width="1644" height="666" alt="Screenshot 2026-02-09 222048" src="https://github.com/user-attachments/assets/128ba827-104e-4cc6-95e2-600ad2611ac9" />
 
+📅 DAY 6 – Security Hardening 🛡️🚦
 
+🎯 Objective: Protect APIs from common security attacks.
+
+Features Implemented
+
+Helmet added for secure HTTP headers
+
+Rate limiting added on authentication routes (login/register)
+
+JWT middleware fully tested for protected task routes
+
+🔐 Helmet (Security Headers)
+
+Helmet secures Express apps by setting HTTP response headers.
+
+Headers added automatically:
+
+X-Content-Type-Options: nosniff
+
+X-Frame-Options: SAMEORIGIN
+
+X-DNS-Prefetch-Control: off
+
+Content-Security-Policy
+
+Strict-Transport-Security
+
+🚦 Rate Limiting
+
+Rate limiting prevents brute-force login attempts.
+
+Limit configuration:
+
+Maximum 5 login attempts
+
+Per 15 minutes
+
+Returns 429 Too Many Requests after limit exceeded
+
+Expected response after limit:
+
+{
+  "message": "Too many login attempts, please try again later"
+}
+
+🔒 Protected Routes Testing
+
+Without Token:
+
+GET /api/tasks
+
+Expected:
+
+{
+  "message": "No token provided"
+}
+
+
+With Valid Token:
+
+Authorization: Bearer <your_token>
+
+Expected:
+
+Status: 200 OK
+Task data returned successfully.
+
+🧪 Testing Steps
+
+Start server
+
+npm start
+
+
+Check Helmet headers in Postman → Response Headers
+
+Hit login API multiple times → Should return 429
+
+Access /api/tasks without token → 401 Unauthorized
+
+Access /api/tasks with token → 200 OK
+
+📷 Screenshots
+
+Helmet Headers Visible
+
+<img width="1644" height="702" alt="Screenshot 2026-02-15 130922" src="https://github.com/user-attachments/assets/96ffeb75-5ea6-41a5-8087-d7f242adba9c" />
+
+Rate Limit (429 Too Many Requests)
+<img width="1635" height="666" alt="Screenshot 2026-02-15 145548" src="https://github.com/user-attachments/assets/338be3c8-8491-4eb2-a5c5-5ad528bcfe35" />
+
+
+Protected Route Without Token
+
+<img width="1652" height="652" alt="Screenshot 2026-02-15 131317" src="https://github.com/user-attachments/assets/ccebe01c-56d2-4de9-ba94-0836c388373f" />
+
+Protected Route With Token
+
+<img width="1635" height="663" alt="Screenshot 2026-02-15 131734" src="https://github.com/user-attachments/assets/b6a2f8e8-b600-4b97-bbef-e6f866e547cb" />
 
 
 
